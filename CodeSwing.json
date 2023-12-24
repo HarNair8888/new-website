@@ -1,78 +1,38 @@
-const products = [
-    { id: 1, name: 'Mobile', price: 500 },
-    { id: 2, name: 'Book', price: 20 },
-];
-
-let shoppingCart = [];
-
-function displayProducts(searchResults) {
-    console.log('Search Results:', searchResults);
-}
-
-function addToCart(product) {
-    shoppingCart.push(product);
-    console.log('Product added to the cart:', product);
-}
-
-function displayShoppingCart() {
-    console.log('Shopping Cart:', shoppingCart);
-}
-
-function checkout() {
-    console.log('Proceeding to checkout. Thank you for shopping with us!');
-    shoppingCart = [];
-}
-
-function login(email, password) {
-    if (email === 'user@example.com' && password === 'password') {
-        console.log('Login successful!');
-        return true;
-    } else {
-        console.log('Invalid credentials. Please try again.');
-        return false;
+{
+    "ecommerceWebsite": {
+      "name": "Online Shopping Platform",
+      "description": "A platform for easy online shopping from a variety of websites.",
+      "features": [
+        "Access online shopping from home",
+        "Secure login with email and password",
+        "Purchase a wide range of products",
+        "International shipping",
+        "Multiple payment options",
+        "Track order status"
+      ],
+      "platformRequirements": {
+        "device": "PC or laptop",
+        "paymentOptions": ["Net banking", "Credit card", "Debit card", "PayPal"]
+      },
+      "security": {
+        "loginCredentials": "Highly secure",
+        "dataProtection": "Ensured"
+      },
+      "shoppingProcess": {
+        "selectProducts": "Choose from various categories and search for specific products",
+        "addtoCart": "Select products and add them to the shopping cart",
+        "checkout": "Proceed to checkout with selected items"
+      },
+      "userAccount": {
+        "loginOptions": ["Use existing Amazon login", "Continue as guest"]
+      },
+      "orderProcess": {
+        "shippingAddress": "Enter the delivery address",
+        "shippingOptions": "Choose the type of delivery",
+        "paymentDetails": "Provide payment information",
+        "orderConfirmation": "Confirm the order",
+        "orderTracking": "Track the order status"
+      }
     }
-}
-
-function trackProduct(orderNumber) {
-    console.log(`Tracking your order with Order Number: ${orderNumber}`);
-}
-
-document.getElementById('searchForm').addEventListener('submit', function (event) {
-    event.preventDefault();
-    const searchTerm = document.getElementById('searchInput').value;
-    const searchResults = products.filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase()));
-    displayProducts(searchResults);
-});
-
-document.getElementById('addToCartBtn').addEventListener('click', function () {
-    const productId = parseInt(prompt('Enter the product ID you want to add to the cart:'), 10);
-    const selectedProduct = products.find(product => product.id === productId);
-    if (selectedProduct) {
-        addToCart(selectedProduct);
-        displayShoppingCart();
-    } else {
-        console.log('Invalid product ID.');
-    }
-});
-
-document.getElementById('checkoutBtn').addEventListener('click', function () {
-    checkout();
-});
-
-document.getElementById('loginForm').addEventListener('submit', function (event) {
-    event.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    if (login(email, password)) {
-        console.log('User is now logged in.');
-    }
-});
-
-document.getElementById('trackProductBtn').addEventListener('click', function () {
-    const orderNumber = parseInt(prompt('Enter your order number:'), 10);
-    if (!isNaN(orderNumber)) {
-        trackProduct(orderNumber);
-    } else {
-        console.log('Invalid order number.');
-    }
-});
+  }
+  
