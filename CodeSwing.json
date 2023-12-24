@@ -1,46 +1,77 @@
-// Function to simulate login with existing credentials
-function login(email, password) {
-    // Add your authentication logic here (e.g., communicate with a server)
-    if (email === 'user@example.com' && password === 'password') {
-        alert('Login successful!');
-        // Redirect or perform other actions after successful login
-    } else {
-        alert('Invalid credentials. Please try again.');
-    }
+// Sample data representing the products available for purchase
+const products = [
+    { id: 1, name: 'Mobile', price: 500 },
+    { id: 2, name: 'Book', price: 20 },
+    // Add more products as needed
+];
+
+let shoppingCart = [];
+
+// Function to display products in the search bar
+function displayProducts(searchResults) {
+    // Replace this with your logic to display products in the search bar
+    console.log('Search Results:', searchResults);
 }
 
-// Function to handle adding a product to the cart
-function addToCart(productName) {
-    // Add your logic to manage the shopping cart (e.g., add to an array)
-    alert(`Added ${productName} to the shopping cart.`);
+// Function to add a product to the shopping cart
+function addToCart(product) {
+    // Replace this with your logic to add the product to the shopping cart
+    shoppingCart.push(product);
+    console.log('Product added to the cart:', product);
 }
 
-// Function to handle the checkout process
+// Function to display the shopping cart
+function displayShoppingCart() {
+    // Replace this with your logic to display the shopping cart
+    console.log('Shopping Cart:', shoppingCart);
+}
+
+// Function to proceed to checkout
 function checkout() {
-    // Add your logic for the checkout process (e.g., collect user details, process payment)
-    alert('Proceeding to checkout. Thank you for shopping with us!');
+    // Replace this with your logic for the checkout process
+    console.log('Proceeding to checkout. Thank you for shopping with us!');
+    // Clear the shopping cart after checkout
+    shoppingCart = [];
+}
+
+// Function to simulate user login
+function login(email, password) {
+    // Replace this with your logic for user authentication
+    if (email === 'user@example.com' && password === 'password') {
+        console.log('Login successful!');
+        return true;
+    } else {
+        console.log('Invalid credentials. Please try again.');
+        return false;
+    }
 }
 
 // Function to simulate tracking the product
 function trackProduct(orderNumber) {
-    // Add your logic to track the delivery status (e.g., communicate with a server)
-    alert(`Tracking your order with Order Number: ${orderNumber}`);
+    // Replace this with your logic to track the delivery status
+    console.log(`Tracking your order with Order Number: ${orderNumber}`);
 }
 
 // Event listeners for various elements
 
-// Login Form
-document.getElementById('loginForm').addEventListener('submit', function (event) {
+// Search bar
+document.getElementById('searchForm').addEventListener('submit', function (event) {
     event.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    login(email, password);
+    const searchTerm = document.getElementById('searchInput').value;
+    const searchResults = products.filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    displayProducts(searchResults);
 });
 
 // Add to Cart Button
 document.getElementById('addToCartBtn').addEventListener('click', function () {
-    const productName = document.getElementById('productName').innerText;
-    addToCart(productName);
+    const productId = parseInt(prompt('Enter the product ID you want to add to the cart:'));
+    const selectedProduct = products.find(product => product.id === productId);
+    if (selectedProduct) {
+        addToCart(selectedProduct);
+        displayShoppingCart();
+    } else {
+        console.log('Invalid product ID.');
+    }
 });
 
 // Checkout Button
@@ -48,8 +79,20 @@ document.getElementById('checkoutBtn').addEventListener('click', function () {
     checkout();
 });
 
+// Login Form
+document.getElementById('loginForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    if (login(email, password)) {
+        // Continue with the logged-in user functionalities
+        // For simplicity, we'll just display a message here
+        console.log('User is now logged in.');
+    }
+});
+
 // Track Product Button
 document.getElementById('trackProductBtn').addEventListener('click', function () {
-    const orderNumber = document.getElementById('orderNumber').value;
+    const orderNumber = prompt('Enter your order number:');
     trackProduct(orderNumber);
 });
