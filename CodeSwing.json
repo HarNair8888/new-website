@@ -1,0 +1,55 @@
+// Function to simulate login with existing credentials
+function login(email, password) {
+    // Add your authentication logic here (e.g., communicate with a server)
+    if (email === 'user@example.com' && password === 'password') {
+        alert('Login successful!');
+        // Redirect or perform other actions after successful login
+    } else {
+        alert('Invalid credentials. Please try again.');
+    }
+}
+
+// Function to handle adding a product to the cart
+function addToCart(productName) {
+    // Add your logic to manage the shopping cart (e.g., add to an array)
+    alert(`Added ${productName} to the shopping cart.`);
+}
+
+// Function to handle the checkout process
+function checkout() {
+    // Add your logic for the checkout process (e.g., collect user details, process payment)
+    alert('Proceeding to checkout. Thank you for shopping with us!');
+}
+
+// Function to simulate tracking the product
+function trackProduct(orderNumber) {
+    // Add your logic to track the delivery status (e.g., communicate with a server)
+    alert(`Tracking your order with Order Number: ${orderNumber}`);
+}
+
+// Event listeners for various elements
+
+// Login Form
+document.getElementById('loginForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    login(email, password);
+});
+
+// Add to Cart Button
+document.getElementById('addToCartBtn').addEventListener('click', function () {
+    const productName = document.getElementById('productName').innerText;
+    addToCart(productName);
+});
+
+// Checkout Button
+document.getElementById('checkoutBtn').addEventListener('click', function () {
+    checkout();
+});
+
+// Track Product Button
+document.getElementById('trackProductBtn').addEventListener('click', function () {
+    const orderNumber = document.getElementById('orderNumber').value;
+    trackProduct(orderNumber);
+});
